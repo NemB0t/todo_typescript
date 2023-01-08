@@ -21,6 +21,7 @@ function App() {
   //Automatic batching reference: https://reactjs.org/blog/2022/03/29/react-v18.html#new-feature-automatic-batching
   const [todoList, setTodoList] = 
   useState<ToDo[]>(JSON.parse(localStorage.getItem(localStorageListKey)||'[]'));
+  
   const handleTodoName = (e:React.ChangeEvent<HTMLInputElement>):void=>{
     setTodo(e.target.value);
   };
