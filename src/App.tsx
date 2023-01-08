@@ -2,7 +2,8 @@ import { useState } from 'react';
 import './App.css';
 import { InputTodo } from './components/inputTodo';
 import { TodoLists } from './components/todoLists';
-import { DragDropContext, DropResult } from 'react-beautiful-dnd'
+import { DragDropContext, DropResult } from '@hello-pangea/dnd';
+// import { DragDropContext, DropResult } from 'react-beautiful-dnd'
 
 
 export interface ToDo {

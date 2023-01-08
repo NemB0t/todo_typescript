@@ -1,4 +1,5 @@
-import { Droppable } from "react-beautiful-dnd";
+// import { Droppable } from "react-beautiful-dnd";
+import { Droppable } from '@hello-pangea/dnd';
 import { ToDo } from "../App"
 import { TodoItem } from "./todoItem";
 

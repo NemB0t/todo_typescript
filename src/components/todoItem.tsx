@@ -2,7 +2,8 @@ import { ToDo } from "../App"
 import { AiFillEdit,AiFillDelete,AiOutlineUndo } from 'react-icons/ai'
 import { MdDone } from 'react-icons/md'
 import { useState } from 'react';
-import { Draggable } from "react-beautiful-dnd";
+// import { Draggable } from "react-beautiful-dnd";
+import { Draggable } from '@hello-pangea/dnd';
 
 interface Props{
     todo:ToDo;
