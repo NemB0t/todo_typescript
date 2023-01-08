@@ -141,7 +141,7 @@ function App() {
 
   //To fetch data from local storage when the component is mounted.
   useEffect(() => {
-    const cacheTodoList:ToDo[] = JSON.parse(localStorage.getItem(localStorageListKey)||'{}');
+    const cacheTodoList:ToDo[] = JSON.parse(localStorage.getItem(localStorageListKey)||'[]');
     if (cacheTodoList) {
      setTodoList(cacheTodoList);
     }
@@ -152,7 +152,7 @@ function App() {
   useEffect(() => {
     if(todoList){
       localStorage.setItem(localStorageListKey, JSON.stringify(todoList));
-      console.log('modified ',todoList)
+      // console.log('modified ',todoList)
     }
   }, [todoList]);
   
