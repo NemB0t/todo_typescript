@@ -6,6 +6,5 @@ Installed another version of package to fix the issue: https://github.com/hello-
 
 
 Todo:
-* Make it responsive - media queries and style the buttons
-* Add local storage
+https://www.freecodecamp.org/news/how-to-use-localstorage-with-react-hooks-to-set-and-get-items/
 * deploy it into github
