@@ -73,11 +73,13 @@ function App() {
     // console.log(result);
     const {source,destination}=result;
 
+    // hover and leave it
     if(!destination) return
-
+    // hover and leave it
     if(destination?.droppableId===source.droppableId 
       && destination.index===source.index) return
     
+    // handle dnd active to completed
     if(source.droppableId==="activeTodos"&&destination.droppableId==="compledtedTodos"){
       const modifiedTodoList = todoList.map((todoItem,todoIndex)=>{
         if(source.index===todoIndex){
@@ -96,6 +98,7 @@ function App() {
 
       setTodoList(modifiedTodoList)
     }
+    // handle dnd completed to active
     if(source.droppableId==="compledtedTodos"&&destination.droppableId==="activeTodos"){
       const modifiedTodoList = todoList.map((todoItem,todoIndex)=>{
         if(source.index===todoIndex){
@@ -114,6 +117,7 @@ function App() {
       setTodoList(modifiedTodoList)
     }
 
+    //handle dnd with in a dropper
     if(source.index!==destination.index &&source.droppableId===destination.droppableId)
     {
       const modifiedTodoList = todoList;
