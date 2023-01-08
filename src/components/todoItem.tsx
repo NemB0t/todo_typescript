@@ -25,6 +25,7 @@ export function TodoItem(props:Props){
     };
 
     const handleEditSubmit = (e:React.FormEvent<HTMLFormElement>):void=>{
+        e.preventDefault();
         props.handleTodoEdit(props.todo.id,editText);
         handleEditToggle();
     }
