@@ -1,16 +1,58 @@
-import { AiFillEdit,AiFillDelete } from 'react-icons/ai'
+import { ToDo } from "../App"
+import { AiFillEdit,AiFillDelete,AiOutlineUndo } from 'react-icons/ai'
 import { MdDone } from 'react-icons/md'
+import { useState } from 'react';
+
 interface Props{
-    val:string;
+    todo:ToDo;
+    handleTodoCheck:(id:string)=>void;
+    handleTodoDelete:(id:string)=>void;
+    handleTodoEdit:(id:string,name:string)=>void;
 }
 
 export function TodoItem(props:Props){
-    return(
-        <div className="todoItem">
-            <span>{props.val}</span>
-            <span className='icon'><AiFillEdit/></span>
-            <span className='icon'><AiFillDelete/></span>
-            <span className='icon'><MdDone/></span>
-        </div>
-    )
+    const [isEdit, setIsEdit] = useState<boolean>(false);
+    const [editText, setEditText] = useState<string>("");
+    const handleEditToggle = ()=>{
+        setIsEdit(prevIsEdit=>!prevIsEdit);
+        setEditText("");
+    };
+    const handleEditTextUpdate = (e:React.ChangeEvent<HTMLInputElement>):void=>{
+        setEditText(e.target.value);
+    };
+
+    const handleEditSubmit = (e:React.FormEvent<HTMLFormElement>):void=>{
+        props.handleTodoEdit(props.todo.id,editText);
+        handleEditToggle();
+    }
+
+    if(props.todo.isCompleted)
+    {
+         return (
+            <div className="todoItem">
+                {isEdit?
+                <form onSubmit={(e)=>{handleEditSubmit(e)}}>
+                    <input type="text" onChange={(e)=>{handleEditTextUpdate(e)}}/>
+                </form>:
+                <s>{props.todo.name}</s>}
+                <button className='icon' onClick={handleEditToggle}><AiFillEdit/></button>
+                <button className='icon' onClick={()=>{props.handleTodoDelete(props.todo.id)}}><AiFillDelete/></button>
+                <button className='icon' onClick={()=>{props.handleTodoCheck(props.todo.id)}}><AiOutlineUndo/></button>
+            </div>   
+        )
+    }
+    else{
+        return(
+            <div className="todoItem">
+                {isEdit?
+                <form onSubmit={(e)=>{handleEditSubmit(e)}}>
+                    <input type="text" className="editInput" onChange={(e)=>{handleEditTextUpdate(e)}}/>
+                </form>:
+                <span>{props.todo.name}</span>}
+                <button className='icon' onClick={handleEditToggle}><AiFillEdit/></button>
+                <button className='icon' onClick={()=>{props.handleTodoDelete(props.todo.id)}}><AiFillDelete/></button>
+                <button className='icon' onClick={()=>{props.handleTodoCheck(props.todo.id)}}><MdDone/></button>
+            </div>
+        )
+    }        
 }
